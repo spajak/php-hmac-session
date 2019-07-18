@@ -1,0 +1,14 @@
+{
+    "name": "spajak/php-hmac-session",
+    "description": "Simple PHP storage-less, HMAC hashed session",
+    "authors": [{
+        "name": "Sebastian Pająk",
+        "email": "spconv@gmail.com"
+    }],
+    "autoload": {
+        "psr-4": {"Spajak\\": "src/"}
+    },
+    "require": {
+        "php": ">=7.3"
+    }
+}

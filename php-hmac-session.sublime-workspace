@@ -1,0 +1,957 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"validat",
+				"validate_email"
+			],
+			[
+				"sta",
+				"statusCode"
+			],
+			[
+				"is",
+				"isLetter"
+			],
+			[
+				"to",
+				"toASCII"
+			],
+			[
+				"li",
+				"link\tTag"
+			],
+			[
+				"wid",
+				"width\tproperty"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"git",
+				"gitPrompt"
+			],
+			[
+				"pro",
+				"prompt"
+			],
+			[
+				"url",
+				"urlToDsn"
+			],
+			[
+				"d",
+				"dsn"
+			],
+			[
+				"pa",
+				"parts"
+			],
+			[
+				"parse",
+				"parse_url"
+			],
+			[
+				"resi",
+				"resizeArgs"
+			],
+			[
+				"re",
+				"returncode"
+			],
+			[
+				"retu",
+				"returnCode"
+			],
+			[
+				"whi",
+				"white"
+			],
+			[
+				"str",
+				"strength"
+			],
+			[
+				"compo",
+				"composeBlend"
+			],
+			[
+				"com",
+				"composeBlendSrc"
+			],
+			[
+				"FI",
+				"filtersArgs"
+			],
+			[
+				"add",
+				"add_argument"
+			],
+			[
+				"s",
+				"src"
+			],
+			[
+				"No",
+				"NormalizeFilter"
+			],
+			[
+				"fi",
+				"filters"
+			],
+			[
+				"inpu",
+				"inputFile"
+			],
+			[
+				"fil",
+				"filter"
+			],
+			[
+				"out",
+				"outputFile"
+			],
+			[
+				"ou",
+				"outputFile"
+			],
+			[
+				"in",
+				"inputFile"
+			],
+			[
+				"for",
+				"force"
+			],
+			[
+				"sear",
+				"searcherID"
+			],
+			[
+				"sto",
+				"stop"
+			],
+			[
+				"resu",
+				"resultsAggregate"
+			],
+			[
+				"sea",
+				"searchers"
+			],
+			[
+				"crea",
+				"createSearcher"
+			],
+			[
+				"se",
+				"setSearchers"
+			],
+			[
+				"getSco",
+				"getScoreEstimator"
+			],
+			[
+				"Sear",
+				"SearcherError"
+			],
+			[
+				"fo",
+				"format"
+			],
+			[
+				"Lyri",
+				"LyricsFormat"
+			],
+			[
+				"sco",
+				"score"
+			],
+			[
+				"getV",
+				"getValueAsString"
+			],
+			[
+				"get",
+				"getValueAsString"
+			],
+			[
+				"missi",
+				"missingFields"
+			],
+			[
+				"result",
+				"results"
+			],
+			[
+				"ge",
+				"genres"
+			],
+			[
+				"backgro",
+				"background-color\tproperty"
+			],
+			[
+				"margi",
+				"margin\tproperty"
+			],
+			[
+				"margin",
+				"margin-top\tproperty"
+			],
+			[
+				"pre",
+				"pre-line\twhite-space"
+			],
+			[
+				"text",
+				"text-align\tproperty"
+			],
+			[
+				"sess",
+				"session_id"
+			],
+			[
+				"ini_",
+				"ini_set"
+			],
+			[
+				"flex",
+				"flex-direction\tproperty"
+			],
+			[
+				"fle",
+				"flex-direction\tproperty"
+			],
+			[
+				"backg",
+				"background-color\tproperty"
+			],
+			[
+				"back",
+				"background-color\tproperty"
+			],
+			[
+				"box",
+				"box-sizing\tproperty"
+			],
+			[
+				"uplo",
+				"uploadedImage"
+			],
+			[
+				"ima",
+				"images"
+			],
+			[
+				"spons",
+				"sponsors"
+			],
+			[
+				"main",
+				"mainSponsors"
+			],
+			[
+				"sass",
+				"sasslint"
+			],
+			[
+				"updat",
+				"updateDefault"
+			],
+			[
+				"te",
+				"textarea\tTag"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"sub",
+				"substr_count"
+			],
+			[
+				"fp",
+				"fputcsv"
+			],
+			[
+				"fget",
+				"fgetcsv"
+			],
+			[
+				"base_",
+				"base64_encode"
+			],
+			[
+				"getc",
+				"get_class"
+			],
+			[
+				"ti",
+				"titlesRepository"
+			],
+			[
+				"reco",
+				"records"
+			],
+			[
+				"Inp",
+				"InputArgument"
+			],
+			[
+				"chu",
+				"chunkSize"
+			],
+			[
+				"Flip",
+				"FlipUpCommand"
+			],
+			[
+				"comma",
+				"command"
+			],
+			[
+				"cona",
+				"container"
+			],
+			[
+				"co",
+				"country"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"ins",
+				"instance2"
+			],
+			[
+				"array_key",
+				"array_key_exists"
+			],
+			[
+				"nam",
+				"namespacedKey"
+			],
+			[
+				"doS",
+				"doSetMultiple"
+			],
+			[
+				"doGet",
+				"doGetMultiple"
+			],
+			[
+				"abs",
+				"abstract"
+			],
+			[
+				"the",
+				"then"
+			],
+			[
+				"Date",
+				"DateTime"
+			],
+			[
+				"def",
+				"default"
+			],
+			[
+				"line",
+				"lineGenerator"
+			],
+			[
+				"ven",
+				"vendorName"
+			],
+			[
+				"skil",
+				"skills"
+			],
+			[
+				"cha",
+				"character2"
+			],
+			[
+				"max",
+				"maxTurns"
+			],
+			[
+				"hea",
+				"health"
+			],
+			[
+				"di",
+				"direction"
+			],
+			[
+				"sor",
+				"sortOrder"
+			],
+			[
+				"cove",
+				"cover_name"
+			],
+			[
+				"arg",
+				"args"
+			],
+			[
+				"cl",
+				"close"
+			],
+			[
+				"hash",
+				"hashlib"
+			],
+			[
+				"res",
+				"responseBuilder"
+			],
+			[
+				"write",
+				"write100Continue"
+			],
+			[
+				"m_req",
+				"m_requestParser"
+			],
+			[
+				"m_re",
+				"m_response"
+			],
+			[
+				"Reques",
+				"RequestPtr"
+			],
+			[
+				"Respo",
+				"ResponsePtr"
+			],
+			[
+				"body",
+				"bodyLength"
+			],
+			[
+				"Handle",
+				"HandlePDF"
+			],
+			[
+				"wri",
+				"writeToStdOut"
+			],
+			[
+				"en",
+				"endif"
+			],
+			[
+				"rea",
+				"readFromStdIn"
+			],
+			[
+				"byt",
+				"bytes_to_read"
+			],
+			[
+				"Hand",
+				"HandlePOST"
+			],
+			[
+				"req",
+				"requestData"
+			],
+			[
+				"Par",
+				"ParseRequest"
+			],
+			[
+				"new",
+				"newBrowsers"
+			],
+			[
+				"Create",
+				"CreateBrowser"
+			],
+			[
+				"m_c",
+				"m_client"
+			],
+			[
+				"Requ",
+				"RequestHandler"
+			],
+			[
+				"Pa",
+				"ParseRequest"
+			],
+			[
+				"ma",
+				"manager"
+			],
+			[
+				"cons",
+				"constants"
+			],
+			[
+				"cal",
+				"calculateZoom"
+			],
+			[
+				"calcu",
+				"calculateIterations"
+			],
+			[
+				"stat",
+				"statusBar"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 238.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"linter",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Linter",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"packa",
+				"Package Control: Discover Packages"
+			],
+			[
+				"tidy",
+				"W3C Validators: Validate SVG 1.1 Tiny"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"lint",
+				"Package Control: Install Package"
+			],
+			[
+				"clipboa",
+				"Clipboard Manager: Show History"
+			],
+			[
+				"clipboard",
+				"Clipboard Manager: Show History"
+			],
+			[
+				"pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"getters",
+				"Generate Getter and Setter for ..."
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"togg",
+				"View: Toggle Menu"
+			],
+			[
+				"uppe",
+				"Convert Case: Upper Case"
+			],
+			[
+				"compa",
+				"Compare with..."
+			],
+			[
+				"auto",
+				"Set Syntax: AutoHotkey"
+			],
+			[
+				"html2",
+				"HTML2Text: Convert selection"
+			],
+			[
+				"html",
+				"HTML2Text: Convert file"
+			],
+			[
+				"val",
+				"W3C Validators: Validate HTML5"
+			],
+			[
+				"encode",
+				"StringEncode: HTML Entitize"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"sftp",
+				"SFTP: Show Panel"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"github",
+				"MarkdownEditing: Switch List Bullet Type"
+			],
+			[
+				"git",
+				"GitHub Flavored Markdown: Preview"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"setting",
+				"Preferences: Settings - User"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 132.0,
+		"history":
+		[
+			"print(sys.version)",
+			"import sys",
+			"__version__",
+			"ls",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": false,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Development/spajak/php-hmac-session"
+	],
+	"file_history":
+	[
+		"/D/Development/spajak/php-hmac-session/composer.json",
+		"/D/Development/eltec/prices/lib/resources/database.sql",
+		"/C/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Auxiliary/Build/vcvarsall.bat",
+		"/D/Applications/share/msvc/install.cmd",
+		"/c/users/spajak/appdata/local/temp/SPBLUE-boytro/.vimrc",
+		"/c/users/spajak/appdata/local/temp/SPCONE-v83102/sync.conf",
+		"/D/Applications/share/apps/ahk/icon2.reg",
+		"/D/Applications/share/install-icons.cmd",
+		"/C/Users/spajak/.ssh/config",
+		"/C/Program Files/OpenSSH-Win64/Set-SSHDefaultShell.ps1",
+		"/W/Security/ssh/sphome/config",
+		"/D/Applications/share/apps/ahk/export.cmd",
+		"/D/Applications/share/apps/ahk/icon.reg",
+		"/D/Applications/totalcmd/fileinfo.ini",
+		"/D/Development/spblue/src/Task.php",
+		"/W/sync.log",
+		"/D/Applications/share/apps/putty/putty-sessions.reg",
+		"/D/Applications/share/win-settings/install.cmd",
+		"/D/Applications/share/.bashrc",
+		"/c/users/spajak/appdata/local/temp/SPCONE-13ttn4/foo.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-a5dt9i/sync.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-xjfs0n/sync.conf",
+		"/W/Security/addresses.lan",
+		"/c/users/spajak/appdata/local/temp/SPCONE-xujx_m/hosts",
+		"/D/hosts",
+		"/c/users/spajak/appdata/local/temp/SPCONE-pl7acv/hosts",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Home/Documents/devel/shell/win-settings/icons.cmd",
+		"/D/Applications/totalcmd/totalcmd.ini",
+		"/W/Security/google.remote.desktop",
+		"/D/Applications/sublime/Data/Packages/User/.git/config",
+		"/D/Applications/sublime/Data/Packages/Compare Side-By-Side/SBSCompare.sublime-settings",
+		"/D/Applications/sublime/Data/Packages/User/SBSCompare.sublime-settings",
+		"/W/Security/sublime.license",
+		"/D/Home/Documents/PowerShell/Microsoft.PowerShell_profile.ps1",
+		"/D/Applications/av/MeGUI_64/changelog.txt",
+		"/D/Applications/python-3.7/python.reg",
+		"/D/Development/spblue/composer.json",
+		"/c/users/spajak/appdata/local/temp/SPCONE-3ec1rb/share_right.map",
+		"/c/users/spajak/appdata/local/temp/SPCONE-gy327e/smb.share.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-e_05xx/smb.share.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-2_lt7a/share_right.map",
+		"/D/Home/Documents/Synology DNS Backup/SPCONE_20190428.dss",
+		"/c/users/spajak/appdata/local/temp/SPCONE-euj38x/__init__.py",
+		"/c/users/spajak/appdata/local/temp/SPCONE-4za3qo/acl-fix.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-ob_jqx/smb.share.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-n1galz/share_right.map",
+		"/c/users/spajak/appdata/local/temp/SPCONE-7aboyc/smbinfo.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-2oiiy_/smb.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-p4icoj/smb.share.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-_lsv5p/acl-fix.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-qjyv23/zfile.c",
+		"/c/users/spajak/appdata/local/temp/SPCONE-wei2nr/smb.share.conf",
+		"/c/users/spajak/appdata/local/temp/SPCONE-5ly9sa/smbinfo.conf",
+		"/D/Development/spblue/src/Validator/EmailValidator.php",
+		"/D/Development/spblue/templates/backup.email.mst",
+		"/D/vim.build",
+		"/W/Security/ssh/spcone/authorized_keys",
+		"/W/Security/ssh/spcone/config",
+		"/W/Security/ssh/android/android.pub",
+		"/c/users/spajak/appdata/local/temp/SPCONE-k4erxu/authorized_keys",
+		"/W/Security/ssh/spblue/spblue.pub",
+		"/c/users/spajak/appdata/local/temp/SPCONE-u4ld00/authorized_keys",
+		"/W/Security/ssh/spcone/spcone.pub",
+		"/c/users/spajak/appdata/local/temp/SPBLUE-m2f7un/authorized_keys",
+		"/W/Security/ssh/spcone/spcone.key",
+		"/W/Security/ssh/id_rsa",
+		"/W/Security/ssh/id_rsa.pub",
+		"/c/users/spajak/appdata/local/temp/SPCONE-xylv_8/.vimrc",
+		"/W/Security/ssh/android/android.key",
+		"/W/Security/ssh/spblue/spblue.key",
+		"/W/Security/ssh/sphome.key",
+		"/W/Security/ssh/sphome.pub",
+		"/c/users/spajak/appdata/local/temp/SPBLUE-uad4ne/authorized_keys",
+		"/D/Development/spblue/src/Task/SendEmailTask.php",
+		"/D/Development/spblue/src/Queue.php",
+		"/D/Development/spblue/src/Subscriber.php",
+		"/D/Development/spblue/src/Consumer.php",
+		"/D/Development/spblue/src/Task/NotificationTask.php",
+		"/D/Development/spblue/src/Mediator.php",
+		"/D/Development/spblue/src/Task/TaskTrait.php",
+		"/D/Development/spblue/src/Factory/LoggerFactory.php",
+		"/W/Security/ssh/spblue/config",
+		"/W/Security/ssh/spblue/authorized_keys",
+		"/W/Security/ssh/spblue/id_rsa",
+		"/W/Security/ssh/spblue/id_rsa.pub",
+		"/W/Security/ssh/config",
+		"/c/users/spajak/appdata/local/temp/SPCONE-006ch8/android.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-ytg4dv/entware.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-5vdzsq/android.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-mfv0a3/entware.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-fg960j/android.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-9ymtv9/entware.sh",
+		"/D/Development/spblue/app/before.php",
+		"/c/users/spajak/appdata/local/temp/SPCONE-0qx2_n/backup.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-liq_pj/backup.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-nzdhvb/entware.sh",
+		"/D/Development/spblue/bin/bind-mount.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-0uq4vi/android.sh",
+		"/c/users/spajak/appdata/local/temp/SPCONE-jhzspe/.vimrc",
+		"/W/Android/.sync/IgnoreList",
+		"/D/Applications/.sync/IgnoreList",
+		"/W/Applications/.sync/IgnoreList",
+		"/D/Development/spblue/src/Provider/LoggerProvider.php",
+		"/D/Development/spblue/src/Provider/MailerProvider.php",
+		"/D/Development/spblue/src/Provider/PredisProvider.php",
+		"/D/Development/spblue/src/Mailer.php",
+		"/D/Development/spblue/src/Exception/LoggerException.php",
+		"/D/Development/spblue/bin/queue.php",
+		"/D/Development/spblue/src/Validator.php",
+		"/D/Development/spblue/src/Database.php",
+		"/D/Development/spblue/src/Factory.php",
+		"/D/Development/spblue/src/Functions.php",
+		"/D/Development/spblue/src/Host.php",
+		"/D/Development/spblue/.env.json.sample",
+		"/D/Development/spblue/.env.json",
+		"/D/Development/spblue/src/Provider/ContextProvider.php",
+		"/D/Development/spblue/bin/notifications.php",
+		"/D/Development/spblue/src/Container.php",
+		"/D/Development/spblue/src/Context.php",
+		"/D/Development/spblue/src/Worker.php",
+		"/D/Development/spblue/src/Factory/DatabaseFactory.php",
+		"/D/Development/spblue/src/Provider/DatabaseProvider.php",
+		"/D/Development/spblue/src/Provider/HostProvider.php",
+		"/D/Development/spblue/src/Task/TestTask.php",
+		"/D/Development/spblue/src/Factory/HostFactory.php",
+		"/D/Development/spblue/src/Factory/MailerFactory.php",
+		"/D/Development/spblue/src/Logger.php"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.SublimeLinter":
+	{
+		"height": 126.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "php-hmac-session.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Home\\Documents\\Ernest Hemingway - Komu bije dzwon\\book.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 712.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 411.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
