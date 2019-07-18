@@ -2,15 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Spajak;
+namespace Spajak\Session;
 
 use InvalidArgumentException;
-use RuntimeException;
 use DomainException;
 use LogicException;
 
 /**
- * Simple, fast, secure, storage-less one-class PHP session.
+ * Simple, fast, secure, storage-less PHP session.
  * No ids, no storage, not locks.
  *
  * How it works:
@@ -31,9 +30,8 @@ use LogicException;
 final class Session
 {
     private $serializers = ['igbinary', 'msgpack', 'json', 'auto'];
-
     private $options;
-    private $source;
+    private $carrier;
     private $serializer;
     private $separator = '.';
     private $loaded = false;
@@ -50,8 +48,6 @@ final class Session
      *   `serializer`     - Serializer to use. Valid options are `igbinary`, `msgpack`, `json`, `auto` (default, check what is available).
      *   `ttl`            - Session Time To Live in seconds. Default is 1800.
      *   `hmac_algorithm` - Not recommended to change this. Default is `sha256` and this should be fine.
-     *   `cookie`         - An Array of cookie parameters: `expires`, `path`, `domain`, `secure`, `httponly` and `samesite`,
-     *                      (see PHP docs for `setcookie` function). By default `expires` is set from `ttl`.
      *
      * Serializers:
      *   `igbinary` - [igbinary serializer PHP extension](https://github.com/igbinary/igbinary).
@@ -59,25 +55,17 @@ final class Session
      *   `json`     - PHP json_encode() and json_decode() functions. This is a fallback serializer if none of the above is usable.
      *
      */
-    public function __construct(array $options)
+    public function __construct(array $options, SessionCarrierInterface $carrier)
     {
         $defaults = [
             'name' => 'session',
             'key' => null,
             'serializer' => 'auto',
             'ttl' => 1800,
-            'hmac_algorithm' => 'sha256',
-            'cookie' => []
+            'hmac_algorithm' => 'sha256'
         ];
         $this->options = array_merge($defaults, $options);
-        $cookie = [
-            'path' => '/',
-            'domain' => '',
-            'secure' => true,
-            'httponly' => false,
-            'samesite' => true
-        ];
-        $this->options['cookie'] = array_merge($cookie, (array) $this->options['cookie']);
+        $this->carrier = $carrier;
         $key = $this->options['key'];
         if (null == $key or strlen($key) < 32) {
             throw new InvalidArgumentException('Key length should be at least 32 bytes');
@@ -125,14 +113,14 @@ final class Session
         return $this;
     }
 
-    public function getName() : string
-    {
-        return (string) $this->options['name'];
-    }
-
     public function getTtl() : int
     {
         return (int) $this->options['ttl'];
+    }
+
+    public function getCarrier() : SessionCarrierInterface
+    {
+        return $this->carrier;
     }
 
     public function getSupply() : ?array
@@ -158,60 +146,22 @@ final class Session
         return 0;
     }
 
-    public function getSessionSourceData() : ?string
-    {
-        $name = $this->getName();
-        if (!isset($_COOKIE[$name]) or !is_string($_COOKIE[$name])) {
-            return null;
-        }
-        return $_COOKIE[$name];
-    }
-
-    public function setSessionSourceData(?string $data = null) : void
-    {
-        $this->source = $data;
-    }
-
-    public function clearSessionSourceData() : void
-    {
-        $this->source = null;
-        unset($_COOKIE[$this->getName()]);
-    }
-
     /**
      * Commit the session.
      */
     public function commit() : void
     {
-        if (headers_sent()) {
-            throw new LogicException('Cannot set session cookie; HTTP headers already sent');
-        }
         if (null === $session = $this->getSession()) {
             return;
         }
-        $options = $this->options['cookie'];
-        if (!isset($options['expires'])) {
-            $options['expires'] = time() + $this->getTtl();
-        }
-        if (setrawcookie($this->getName(), $session, $options)) {
-            throw new RuntimeException('Could not set session cookie');
-        }
+        $this->carrier->store($session, $this->getTtl());
     }
 
     public function destroy() : void
     {
-        $this->clear();
         $this->supply = null;
-        if (headers_sent()) {
-            throw new LogicException('Cannot expire session cookie; HTTP headers already sent');
-        }
-        $name = $this->getName();
-        unset($_COOKIE[$name]);
-        $options = $this->options['cookie'];
-        $options['expires'] = time() - 100 * $this->getTtl();
-        if (setrawcookie($name, '', $options)) {
-            throw new RuntimeException('Could not expire session cookie');
-        }
+        $this->clear();
+        $this->carrier->destroy();
     }
 
     public function serialize(array $data) : ?string
@@ -239,10 +189,10 @@ final class Session
             return;
         }
         $this->loaded = true;
-        if (null === $source = $this->getSessionSourceData()) {
+        if (null === $session = $this->carrier->fetch()) {
             return;
         }
-        $this->supply($source);
+        $this->supply($session);
         if (!$this->supply) {
             return;
         }
@@ -309,7 +259,7 @@ final class Session
         }
         $serializers = $this->getAvailableSerializers();
         if (empty($serializers)) {
-            throw new RuntimeException('No usable serializer found!');
+            throw new LogicException('No usable serializer found! This should not happen!');
         }
         if ($serializer !== 'auto') {
             if (!isset($serializers[$serializer])) {

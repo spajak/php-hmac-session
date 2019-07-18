@@ -6,7 +6,7 @@
         "email": "spconv@gmail.com"
     }],
     "autoload": {
-        "psr-4": {"Spajak\\": "src/"}
+        "psr-4": {"Spajak\\Session\\": "src/"}
     },
     "require": {
         "php": ">=7.3"

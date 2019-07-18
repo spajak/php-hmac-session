@@ -16,5 +16,3 @@ No ids, no storage, not locks.
    (both are optional, and are available as PHP extensions). Thanks to this serialized session data can be significantly
    smaller and serialization process is generally faster comparing to other serializers.
    Serialization falls back to text form (`json`) in case both binary serializers are not available.
-
- - **Simple**. Just one PHP class with a clean, explicit and easy to use interface.
