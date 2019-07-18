@@ -33,6 +33,7 @@ final class Session
     private $serializers = ['igbinary', 'msgpack', 'json', 'auto'];
 
     private $options;
+    private $source;
     private $serializer;
     private $separator = '.';
     private $loaded = false;
@@ -157,12 +158,31 @@ final class Session
         return 0;
     }
 
+    public function getSessionSourceData() : ?string
+    {
+        $name = $this->getName();
+        if (!isset($_COOKIE[$name]) or !is_string($_COOKIE[$name])) {
+            return null;
+        }
+        return $_COOKIE[$name];
+    }
+
+    public function setSessionSourceData(?string $data = null) : void
+    {
+        $this->source = $data;
+    }
+
+    public function clearSessionSourceData() : void
+    {
+        $this->source = null;
+        unset($_COOKIE[$this->getName()]);
+    }
+
     /**
      * Commit the session.
      */
     public function commit() : void
     {
-        $this->load();
         if (headers_sent()) {
             throw new LogicException('Cannot set session cookie; HTTP headers already sent');
         }
@@ -171,7 +191,7 @@ final class Session
         }
         $options = $this->options['cookie'];
         if (!isset($options['expires'])) {
-            $options['expires'] = time() + $this->ttl;
+            $options['expires'] = time() + $this->getTtl();
         }
         if (setrawcookie($this->getName(), $session, $options)) {
             throw new RuntimeException('Could not set session cookie');
@@ -188,7 +208,7 @@ final class Session
         $name = $this->getName();
         unset($_COOKIE[$name]);
         $options = $this->options['cookie'];
-        $options['expires'] = time() - 100 * $this->ttl;
+        $options['expires'] = time() - 100 * $this->getTtl();
         if (setrawcookie($name, '', $options)) {
             throw new RuntimeException('Could not expire session cookie');
         }
@@ -219,11 +239,10 @@ final class Session
             return;
         }
         $this->loaded = true;
-        $name = $this->getName();
-        if (!isset($_COOKIE[$name]) or !is_string($_COOKIE[$name])) {
+        if (null === $source = $this->getSessionSourceData()) {
             return;
         }
-        $this->supply($_COOKIE[$name]);
+        $this->supply($source);
         if (!$this->supply) {
             return;
         }
@@ -265,7 +284,7 @@ final class Session
         }
         $s = preg_quote($this->separator);
         // base64 - unix timestamp - lowercase hex
-        if (!preg_match('`^([a-zA-Z\d\+/]+[=]{0,2})'.$s.'(\d+)'.$s.'([0-9a-f]+)`$', $value, $matches)) {
+        if (!preg_match('`^([a-zA-Z\d\+/]+[=]{0,2})'.$s.'(\d+)'.$s.'([0-9a-f]+)$`', $value, $matches)) {
             return;
         }
         $payload = base64_decode($matches[1]);
@@ -298,7 +317,7 @@ final class Session
             }
             $this->serializer = $serializers[$serializer];
         } else {
-            $this->serializer = $serializers[0];
+            $this->serializer = array_shift($serializers);
         }
     }
 
