@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Spajak\Session;
 
 use LengthException;
+use DomainException;
 use Spajak\Session\Serializer\JsonSerializer;
+use Spajak\Session\Serializer\MessagePackSerializer;
 
 /**
  * Simple, fast, secure, storage-less PHP session.
@@ -34,7 +36,7 @@ final class Session
 
     /**
      * Creates the session.
-     * Serializer is optional and defaults to `json`.
+     * Serializer is optional and defaults to `msgpack` if available, else `json`.
      */
     public function __construct(
         SessionCarrierInterface $carrier,
@@ -43,7 +45,14 @@ final class Session
     ) {
         $this->carrier = $carrier;
         $this->authenticator = $authenticator;
-        $this->serializer = $serializer ?: new JsonSerializer;
+        $this->serializer = $serializer;
+        if (!$this->serializer) {
+            try {
+                $this->serializer = new MessagePackSerializer;
+            } catch (DomainException $e) {
+                $this->serializer = new JsonSerializer;
+            }
+        }
     }
 
     public function set(string $key, $value) : self

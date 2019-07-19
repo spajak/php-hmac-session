@@ -14,10 +14,10 @@ Project is not stable yet! Do not use in production.
    is considered invalid and is discarded, but a supplied message is still available for investigation.
 
  - **Binary serialized**. Session data is serialized into a binary string using one of the two popular binary serializers:
-   [`igbinary`](https://github.com/igbinary/igbinary) and [`msgpack`](https://github.com/msgpack/msgpack-php)
-   (both are optional, and are available as PHP extensions). Thanks to this serialized session data can be significantly
+   [`msgpack`](https://github.com/msgpack/msgpack-php) and [`igbinary`](https://github.com/igbinary/igbinary)
+   (both are optional, and are available as PHP extensions). Thanks to this, serialized session data can be significantly
    smaller and serialization process is generally faster comparing to other serializers.
-   Serialization falls back to text form (`json`) in case both binary serializers are not available.
+   Serialization falls back to text form (`json`) in case binary serializers are not available.
 
 # Limits
  - HTTP Cookie size is limited to **4096** bytes by the browsers. Therefore keep the session data as small as possible.
@@ -66,8 +66,8 @@ $session->commit();
 See also `examples` directory.
 
 # Serializers
- - igbinary [`igbinary`](https://github.com/igbinary/igbinary). Must be compiled as a PHP extension.
- - MessagePack [`msgpack`](https://github.com/msgpack/msgpack-php). Must be compiled as a PHP extension.
+ - MessagePack [`msgpack`](https://github.com/msgpack/msgpack-php). Smallest serialized output size. Must be compiled as a PHP extension.
+ - igbinary [`igbinary`](https://github.com/igbinary/igbinary). Good for repetitive strings. Good for integers. Must be compiled as a PHP extension.
  - Json (PHP internal).
  - Add your own!
 
