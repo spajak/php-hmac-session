@@ -11,20 +11,16 @@ use Spajak\Session\Serializer\JsonSerializer;
  * Simple, fast, secure, storage-less PHP session.
  * No ids, no storage, not locks.
  *
- * How it works:
- * The session is serialized to a string then hashed, and finally it looks like this:
- *   `payload.expire.hash` (or `message.hash` in short).
- * Where:
- *   `payload` - Base64 encoded serialized session array.
- *   `expire`  - Unix timestamp that tells when the session will expire.
- *   `hash`    - HMAC hash of the `payload.expire` string (`payload` before base64 encode).
- * In this form the session is sent as a whole to the client (with a `set-cookie` response header).
- * When the client sends the cookie with a request, session is validated for authenticity,
- * then `expire` time is checked. If all is green, the session is unserialized back to PHP array.
+ * Session is serialized and signed into a string of the form: `payload.expire.hash`.
+ * Session is loaded and validated for authenticity and split into payload and expire.
+ * Then, if not expired, it is unserialized and resumed.
+ *
+ * Session has to be committed explicitly with `::commit()` method.
  *
  * Limits:
  * Cookie size is limited to 4096 bytes. Therefore keep the session data as small as possible.
- * Use getSize() method to calculate current session size, if unsure.
+ * Use `::getSession::getSize()` method to get the current session size at any time, if unsure.
+ *
  */
 final class Session
 {
@@ -38,7 +34,7 @@ final class Session
 
     /**
      * Creates the session.
-     *
+     * Serializer is optional and defaults to `json`.
      */
     public function __construct(
         SessionCarrierInterface $carrier,
@@ -129,7 +125,7 @@ final class Session
     public function getLoadedSession() : Message
     {
         $this->load();
-        return $this->loaded ?: new Message;
+        return $this->loaded;
     }
 
     /**
