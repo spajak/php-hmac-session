@@ -14,6 +14,8 @@ class HmacAuthenticator implements SessionAuthenticatorInterface
     protected $algo = 'sha256';
     protected $key;
     protected $separator;
+    protected $inputSizeMin = 16;
+    protected $inputSizeMax = 524288;
 
     public function __construct(string $key, string $separator = '.')
     {
@@ -33,27 +35,36 @@ class HmacAuthenticator implements SessionAuthenticatorInterface
         $hash = hash_hmac($this->algo, $value, $this->key);
         $msg = base64_encode($message->payload).$this->separator.$message->expire;
         $message->session = $msg.$this->separator.$hash;
+        $message->state = Message::VALID;
     }
 
     public function validate(Message $message) : void
     {
-        $message->valid = false;
+        $length = strlen($message->session);
         // payload + separator + expire + separator + hash
-        if (empty($message->session) or strlen($message->session) < 16) {
+        if ($length < $this->inputSizeMin or $length > $this->inputSizeMax) {
+            $message->state = Message::INVALID_SIZE;
             return;
         }
         $s = preg_quote($this->separator);
         // base64 + unix timestamp + lowercase hex
         $pattern = '`^([a-zA-Z\d\+/]+[=]{0,2})'.$s.'(\d+)'.$s.'([0-9a-f]+)$`';
         if (!preg_match($pattern, $message->session, $matches)) {
+            $message->state = Message::INVALID_FORMAT;
             return;
         }
         $message->payload = base64_decode($matches[1]);
         $message->expire = (int) $matches[2];
+        if ($message->expire < time()) {
+            $message->state = Message::EXPIRED;
+            return;
+        }
         $hash = $matches[3];
         $value = $message->payload.$this->separator.$message->expire;
         if (hash_equals(hash_hmac($this->algo, $value, $this->key), $hash)) {
-            $message->valid = $message->expire > time();
+            $message->state = Message::VALID;
+        } else {
+            $message->state = Message::INVALID_HASH;
         }
     }
 }

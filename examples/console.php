@@ -17,11 +17,11 @@ $session = new Session(new MemoryCarrier($input), new HmacAuthenticator($key));
 
 if ($input) {
     $previous = $session->getLoadedSession();
-    if ($previous->valid) {
+    if ($previous->isValid()) {
         echo sprintf("Loaded session (%s): %s\n", $previous->getSize(), $previous);
         var_dump($session->getData());
     } else {
-        echo sprintf("Loaded session is not valid: %s\n", $previous);
+        echo sprintf("Loaded session is not valid. Reason: %s\n", $previous->state);
     }
 } else {
     $session

@@ -141,7 +141,7 @@ final class Session
             return;
         }
         $this->authenticator->validate($this->loaded);
-        if (true !== $this->loaded->valid) {
+        if ($this->loaded->state !== Message::VALID) {
             return;
         }
         $this->data = $this->serializer->unserialize($this->loaded->payload);

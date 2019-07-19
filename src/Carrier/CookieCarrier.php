@@ -7,12 +7,14 @@ namespace Spajak\Session\Carrier;
 use Spajak\Session\SessionCarrierInterface;
 use Spajak\Session\Message;
 use LogicException;
+use LengthException;
 use RuntimeException;
 
 class CookieCarrier implements SessionCarrierInterface
 {
     protected $options;
     protected $name = 'session';
+    protected $sizeLimit = 4096;
     protected $cookieSet;
 
     /**
@@ -62,6 +64,13 @@ class CookieCarrier implements SessionCarrierInterface
     {
         if ($this->cookieSet) {
             throw new LogicException('Session cookie already set');
+        }
+        if ($message->getSize() > $this->sizeLimit) {
+            throw new LengthException(sprintf(
+                'Cookie size cannot be greater than %s bytes. Got %s bytes',
+                $this->sizeLimit,
+                $message->getSize()
+            ));
         }
         if (headers_sent()) {
             throw new LogicException('Cannot set session cookie; HTTP headers already sent');
