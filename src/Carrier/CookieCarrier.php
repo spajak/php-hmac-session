@@ -5,70 +5,91 @@ declare(strict_types=1);
 namespace Spajak\Session\Carrier;
 
 use Spajak\Session\SessionCarrierInterface;
-use DomainException;
+use Spajak\Session\Message;
+use LogicException;
 use RuntimeException;
 
 class CookieCarrier implements SessionCarrierInterface
 {
     protected $options;
+    protected $name = 'session';
+    protected $cookieSet;
 
     /**
      * Options:
-     *  - An Array of cookie parameters: `expires`, `path`, `domain`, `secure`, `httponly` and `samesite`.
+     *  - An Array of cookie parameters: `name`, `expires`, `path`, `domain`, `secure`, `httponly` and `samesite`.
      * For explanation see [PHP `setcookie()`](https://www.php.net/manual/en/function.setcookie.php).
      */
     public function __construct(array $options = [])
     {
         if (php_sapi_name() === 'cli') {
-            throw new DomainException('Cookies cannot be used is PHP CLI mode');
+            throw new LogicException('Cookies cannot be used is PHP CLI mode');
+        }
+        if (isset($options['name'])) {
+            $this->name = (string) $options['name'];
         }
         $defaults = [
-            'name' => 'session',
+            'expires' => null,
             'path' => '/',
             'domain' => '',
             'secure' => true,
             'httponly' => false,
-            'samesite' => true
+            'samesite' => 'Strict'
         ];
-        $this->options = array_merge($defaults, $options);
+        foreach ($defaults as $name => $value) {
+            if (isset($options[$name])) {
+                $this->options[$name] = $options[$name];
+            } else {
+                $this->options[$name] = $value;
+            }
+        }
     }
 
-    public function fetch() : ?string
+    public function fetch() : Message
     {
-        if (!isset($_COOKIE[$this->options['name']])) {
-            return null;
+        $message = new Message;
+        if (!isset($_COOKIE[$this->name])) {
+            return $message;
         }
-        $value = $_COOKIE[$this->options['name']];
-        if (!is_string($value) or '' === trim($value)) {
-            return null;
+        $value = $_COOKIE[$this->name];
+        if (is_string($value) and '' !== $value = trim($value)) {
+            $message->session = $value;
         }
-        return trim($value);
+        return $message;
     }
 
-    public function store(string $data, int $ttl = 0) : void
+    public function store(Message $message) : void
     {
+        if ($this->cookieSet) {
+            throw new LogicException('Session cookie already set');
+        }
         if (headers_sent()) {
-            throw new DomainException('Cannot set session cookie; HTTP headers already sent');
+            throw new LogicException('Cannot set session cookie; HTTP headers already sent');
         }
         $options = $this->options;
         if (!isset($options['expires'])) {
-            $options['expires'] = $ttl > 0 ? time() + $ttl : 0;
+            $options['expires'] = $message->expire ?: 0;
         }
-        if (!setrawcookie($options['name'], $data, $options)) {
+        if (!@setrawcookie($this->name, $message->session, $options)) {
             throw new RuntimeException('Could not set session cookie');
         }
+        $this->cookieSet = true;
     }
 
     public function destroy() : void
     {
-        if (headers_sent()) {
-            throw new DomainException('Cannot expire session cookie; HTTP headers already sent');
+        if ($this->cookieSet) {
+            throw new LogicException('Session cookie already set');
         }
+        if (headers_sent()) {
+            throw new LogicException('Cannot expire session cookie; HTTP headers already sent');
+        }
+        unset($_COOKIE[$this->name]);
         $options = $this->options;
-        unset($_COOKIE[$options['name']]);
-        $options['expires'] = time() - 60*60*24;
-        if (!setrawcookie($options['name'], '', $options)) {
+        $options['expires'] = 1;
+        if (!@setrawcookie($this->name, '', $options)) {
             throw new RuntimeException('Could not expire session cookie');
         }
+        $this->cookieSet = true;
     }
 }

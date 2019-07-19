@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace Spajak\Session\Carrier;
 
 use Spajak\Session\SessionCarrierInterface;
+use Spajak\Session\Message;
 
 class MemoryCarrier implements SessionCarrierInterface
 {
     protected $data;
 
-    public function __construct(string $data = null)
+    public function __construct(?string $data = null)
     {
-        $this->input = $data;
+        $this->data = $data;
     }
 
     public function __toString()
@@ -20,14 +21,16 @@ class MemoryCarrier implements SessionCarrierInterface
         return $this->data ?? '';
     }
 
-    public function fetch() : ?string
+    public function fetch() : Message
     {
-        return $this->data;
+        $m = new Message;
+        $m->session = $this->data;
+        return $m;
     }
 
-    public function store(string $data, int $ttl = 0) : void
+    public function store(Message $message) : void
     {
-        $this->data = $data;
+        $this->data = $message->session;
     }
 
     public function destroy() : void

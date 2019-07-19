@@ -6,9 +6,9 @@ namespace Spajak\Session;
 
 interface SessionCarrierInterface
 {
-    public function fetch() : ?string;
+    public function fetch() : Message;
 
-    public function store(string $data, int $ttl = 0) : void;
+    public function store(Message $message) : void;
 
     public function destroy() : void;
 }
