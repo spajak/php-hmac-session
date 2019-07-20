@@ -9,7 +9,7 @@ Project is not stable yet! Do not use in production.
    The client sends it back to the server (with the next request) where the session is verified and unserialized into PHP array.
 
  - **Secure**. Session is signed with [HMAC](https://en.wikipedia.org/wiki/HMAC) message authentication code before
-   it is sent to the client. Thanks to this we are able to verify both the data integrity and the authentication of a session.
+   it is sent to the client. Thanks to this we are able to verify both integrity and authenticity of the session data.
    Session is also stamped with an expire time (as a unix timestamp appended to the serialized session data). Expired session
    is considered invalid and is discarded, but a supplied message is still available for investigation.
 
@@ -21,7 +21,8 @@ Project is not stable yet! Do not use in production.
 
 # Limits
  - HTTP Cookie size is limited to **4096** bytes by the browsers. Therefore keep the session data as small as possible.
-   Use `Session::getSession()::getSize()` method to get the current session size at any time, if unsure.
+   If you need more size you need database. Use `Session::getSession()::getSize()` method to get the current session
+   size at any time, if unsure.
 
 # How it works
 The session is internally keept as an `array`. Before commit, it is serialized into a string. Then hashed (`sha256`), signed,
