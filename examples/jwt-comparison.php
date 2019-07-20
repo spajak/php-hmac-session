@@ -19,19 +19,51 @@ function millitime() {
 
 $key = '989c1dc746915cc3e761d002072a74ccdf258b878f37f71080a39a56fa8dfb18';
 
+$data = [
+    "foo" => "bar",
+    "session" => [
+        "user_id" => 12942834234,
+        "roles" => ["user", "member", "voter"],
+        "likes" => ["football", "beer", "couch"]
+    ],
+    "abc" => ['one', 2, 'three hundred']
+];
+
+// Session ---------------------------------------------------------------------
 $session = new Session(new MemoryCarrier, new HmacAuthenticator($key));
-$session
-    ->set('foo', 'bar')
-    ->set('abc', ['one', 2, 'three']);
-
+$authenticator = $session->getAuthenticator();
+$serializer = $session->getSerializer();
+$session = $session->getSession();
 $t = millitime();
 for ($i = 0; $i < ITERATIONS; $i++) {
-    $value = $session->getSession();
+    $session->payload = $serializer->serialize($data);
+    $authenticator->sign($session);
 }
-echo sprintf("Session: %s bytes in %s ms\n", strlen($value->getSize()), millitime() - $t);
-
+$size = $session->getSize();
+$t1 = millitime() - $t;
 $t = millitime();
 for ($i = 0; $i < ITERATIONS; $i++) {
-    $value = jwt_encode($session->getData(), $key, 'HS256');
+    $authenticator->validate($session);
+    $serializer->unserialize($session->payload);
 }
-echo sprintf("JWT: %s bytes in %s ms\n", strlen($value), millitime() - $t);
+$t2 = millitime() - $t;
+
+echo sprintf("Session: %s bytes in %s ms and %s ms\n", $size, $t1, $t2);
+
+// JWT -------------------------------------------------------------------------
+$t = millitime();
+for ($i = 0; $i < ITERATIONS; $i++) {
+    jwt_encode($data, $key, 'HS256');
+}
+$value = jwt_encode($data, $key, 'HS256');
+$size = strlen($value);
+$t1 = millitime() - $t;
+$t = millitime();
+for ($i = 0; $i < ITERATIONS; $i++) {
+    jwt_decode($value, $key, 'HS256');
+}
+$t2 = millitime() - $t;
+
+echo sprintf("JWT: %s bytes in %s ms and %s ms\n", $size, $t1, $t2);
+
+echo "Keep in mind \"jwt\" is a C extension\n";
